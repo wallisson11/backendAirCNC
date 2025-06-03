@@ -18,7 +18,7 @@ const SalasSchema = new mongoose.Schema({
 
 // campo virtual criado para mostrar as imagens das Salas
 SalasSchema.virtual('thumbnail_url').get( function (){
-    retun `http://localhost:3335/files/${this.thumbnail}`
+    return `http://localhost:3335/files/${this.thumbnail}`
 })
 
 module.exports = mongoose.model('Salas', SalasSchema)
