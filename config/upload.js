@@ -10,7 +10,7 @@ module.exports = {
     // filename() é um função e montar o nome do arquivo, como quero gravar
     // cb é afunção que chamo assim que tiver o nome definido
     storage: multer.diskStorage({
-        destination: path.resolve(__dirname, '..', '..', 'uploads'),
+        destination: path.resolve(__dirname, '..', 'uploads'),
         filename:(req, file, cb) =>{
             const ext = path.extname(file.originalname);
             const name = path.basename(file.originalname, ext);

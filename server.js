@@ -1,6 +1,7 @@
 require('dotenv').config(); 
 const express = require("express");
 const cors = require('cors');
+const path = require('path');
 const mongoose = require("mongoose");
 
 const routes = require('./routes');
@@ -26,14 +27,15 @@ app.get('/ping', (req, res) => {
 // Deve vir após o express.json(), para que o body já seja convertido em objeto JavaScript.
 // Registra todas as sub-rotas definidas em routes.js.
 app.use(routes)
+app.use('/files', express.static(path.resolve(__dirname, 'uploads')));
+
 
 async function startDatabase(){
    
     const { DB_USER, DB_PASS, DB_NAME } = process.env;
 
-    const uri = `mongodb+srv://${DB_USER}:${DB_PASS}@cluster.bgci7mw.mongodb.net/${DB_NAME}?retryWrites=true&w=majority&appName=Cluster`;
-    // await mongoose.connect('mongodb+srv://login:senha@omnistack9.qwkirlk.mongodb.net/dataArcnc?retryWrites=true&w=majority&appName=omnistack9');
-    // mongodb+srv://matheushssousa:<db_password>@cluster.bgci7mw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster
+    const uri = `mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.gvrzawi.mongodb.net/${DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`;
+    // mongodb+srv://wallissonsccp:<db_password>@cluster0.gvrzawi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
     try {
         await mongoose.connect(uri);
